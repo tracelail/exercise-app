@@ -1,0 +1,32 @@
+<ExerciseDetailScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            id: exercise_name
+            font_size: 28
+            bold: True
+            size_hint_y: None
+            height: 50
+
+        Image:
+            id: exercise_image
+            source: ""
+            size_hint_y: None
+            height: 200
+
+        ScrollView:
+            Label:
+                id: exercise_desc
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
+                font_size: 18
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "exercise_list"

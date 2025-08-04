@@ -1,0 +1,26 @@
+<ExerciseListScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        spacing: 10
+
+        TextInput:
+            id: search_input
+            hint_text: "Search exercises"
+            multiline: False
+            size_hint_y: None
+            height: 40
+            on_text: root.filter_exercises(self.text)
+
+        ScrollView:
+            BoxLayout:
+                id: exercise_list
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "home"
