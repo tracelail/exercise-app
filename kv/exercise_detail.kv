@@ -2,31 +2,33 @@
     BoxLayout:
         orientation: "vertical"
         padding: 20
-        spacing: 10
+        spacing: 15
 
         Label:
             id: exercise_name
+            text: "Exercise Name"
             font_size: 28
             bold: True
+            halign: "center"
             size_hint_y: None
-            height: 50
+            height: self.texture_size[1] + 20
 
         Image:
             id: exercise_image
-            source: ""
-            size_hint_y: None
-            height: 200
+            source: "assets/placeholder.png"
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_y: 0.5
 
-        ScrollView:
-            Label:
-                id: exercise_desc
-                text_size: self.width, None
-                size_hint_y: None
-                height: self.texture_size[1]
-                font_size: 18
+        Label:
+            id: exercise_desc
+            text: "Description here"
+            font_size: 18
+            halign: "center"
+            text_size: self.width, None
 
         Button:
             text: "Back"
             size_hint_y: None
             height: 50
-            on_press: app.root.current = "exercise_list"
+            on_press: app.root.current = "home"
