@@ -1,5 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ListProperty
+from app.utils import storage
 
 class WorkoutBuilderScreen(Screen):
     workout = ListProperty([])  # Stores exercises with sets/reps
@@ -60,18 +61,13 @@ class WorkoutBuilderScreen(Screen):
             print("Please enter a workout name!")
             return
 
-        workout_data = {
-            "name": self.workout_name,
-            "exercises": self.workout
-        }
+        workouts = storage.load_workouts()
+        workouts.append({"name": self.workout_name, "exercises": self.workout})
+        storage.save_workouts(workouts)
 
-        # Persist to storage (we can use JSON file)
-        from app.utils import storage
-        storage.save_workout(workout_data)
-
-        print(f"Workout '{self.workout_name}' saved with {len(self.workout)} exercises.")
+        print(f"Workout '{self.workout_name}' saved.")
         self.workout.clear()
         self.workout_name = ""
         self.refresh_workout_list()
-        self.manager.current = "home"
+        self.manager.current = "workout_list"
 

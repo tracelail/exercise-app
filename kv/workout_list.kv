@@ -1,0 +1,25 @@
+<WorkoutListScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Saved Workouts"
+            font_size: "20sp"
+            size_hint_y: None
+            height: "40dp"
+
+        ScrollView:
+            BoxLayout:
+                id: workout_list
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+
+        Button:
+            text: "Back to Home"
+            size_hint_y: None
+            height: "50dp"
+            on_release: app.root.current = "home"

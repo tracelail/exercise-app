@@ -3,17 +3,16 @@ from pathlib import Path
 import os
 
 FILE_PATH = "saved_workouts.json"
+WORKOUT_FILE = Path(__file__).resolve().parents[1] / "workouts.json"
 
 def load_workouts():
-    if not os.path.exists(FILE_PATH):
+    if not WORKOUT_FILE.exists():
         return []
-    with open(FILE_PATH, "r") as f:
+    with open(WORKOUT_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_workout(workout):
-    workouts = load_workouts()
-    workouts.append(workout)
-    with open(FILE_PATH, "w") as f:
+def save_workouts(workouts):
+    with open(WORKOUT_FILE, "w", encoding="utf-8") as f:
         json.dump(workouts, f, indent=4)
 
 def load_exercises():

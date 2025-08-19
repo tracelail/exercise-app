@@ -1,0 +1,22 @@
+[
+    {
+        "name": "monday",
+        "exercises": [
+            {
+                "name": "Adductor",
+                "sets": 4,
+                "reps": 10
+            }
+        ]
+    },
+    {
+        "name": "monday",
+        "exercises": [
+            {
+                "name": "Adductor",
+                "sets": 4,
+                "reps": 10
+            }
+        ]
+    }
+]
