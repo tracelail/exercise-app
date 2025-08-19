@@ -1,0 +1,43 @@
+<WorkoutBuilderScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        spacing: 10
+
+        TextInput:
+            id: workout_name
+            hint_text: "Enter Workout Name"
+            text: root.workout_name
+            size_hint_y: None
+            height: "40dp"
+            on_text: root.workout_name = self.text
+
+        ScrollView:
+            size_hint_y: 0.6
+            BoxLayout:
+                id: workout_list
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+
+        Button:
+            text: "Add Exercise"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.adding_exercise = True
+                app.root.current = "exercise_list"
+
+        BoxLayout:
+            size_hint_y: None
+            height: "50dp"
+            spacing: 10
+
+            Button:
+                text: "Save Workout"
+                on_release: root.save_workout()
+
+            Button:
+                text: "Cancel"
+                on_release: app.root.current = "home"

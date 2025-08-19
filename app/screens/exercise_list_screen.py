@@ -35,7 +35,16 @@ class ExerciseListScreen(Screen):
         self.display_exercises(filtered)
 
     def show_detail(self, exercise):
-        detail_screen = self.manager.get_screen("exercise_detail")
-        detail_screen.set_exercise(exercise)
-        self.manager.current = "exercise_detail"
+        builder_screen = self.manager.get_screen("build_workout")
+
+        if builder_screen.adding_exercise:
+            # We're in workout building mode → add exercise
+            builder_screen.add_exercise(exercise)
+            builder_screen.adding_exercise = False
+            self.manager.current = "build_workout"
+        else:
+            # Normal behavior → show details
+            detail_screen = self.manager.get_screen("exercise_detail")
+            detail_screen.set_exercise(exercise)
+            self.manager.current = "exercise_detail"
 

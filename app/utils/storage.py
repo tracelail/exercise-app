@@ -1,5 +1,20 @@
 import json
 from pathlib import Path
+import os
+
+FILE_PATH = "saved_workouts.json"
+
+def load_workouts():
+    if not os.path.exists(FILE_PATH):
+        return []
+    with open(FILE_PATH, "r") as f:
+        return json.load(f)
+
+def save_workout(workout):
+    workouts = load_workouts()
+    workouts.append(workout)
+    with open(FILE_PATH, "w") as f:
+        json.dump(workouts, f, indent=4)
 
 def load_exercises():
     # Always resolve from the project root
