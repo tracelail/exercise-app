@@ -4,6 +4,14 @@ from pathlib import Path
 class ExerciseDetailScreen(Screen):
     def set_exercise(self, exercise):
         self.ids.exercise_name.text = exercise["name"]
-        self.ids.exercise_desc.text = f"Target: {exercise['primaryMuscles']}\nEquipment: {exercise['equipment']}\nInstructions: {exercise['instructions']}"
-        # Use gifUrl if you want
-        self.ids.exercise_image.source = exercise.get("gifUrl", "assets/placeholder.png")
+        self.ids.exercise_desc.text = (
+            f"Target: {exercise['primaryMuscles']}\n"
+            f"Equipment: {exercise['equipment']}\n"
+            f"Instructions: {exercise['instructions']}"
+        )
+
+        base_url = "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/"
+        if exercise.get("images"):
+            self.ids.exercise_image.source = base_url + exercise["images"][0]
+        else:
+            self.ids.exercise_image.source = "assets/placeholder.png"

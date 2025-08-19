@@ -1,0 +1,1 @@
+exercise_data.json downloaded from "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json"
